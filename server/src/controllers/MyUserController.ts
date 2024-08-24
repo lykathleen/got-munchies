@@ -6,6 +6,10 @@ const createCurrentUser = async (req: Request, res: Response) => {
     const { auth0Id } = req.body;
     const existingUser = await User.findOne({ auth0Id });
 
+    if (!auth0Id) {
+      return res.status(400).send('auth0Id is required');
+    }
+
     if (existingUser) {
       return res.status(200).send();
     }
