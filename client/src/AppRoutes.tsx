@@ -3,9 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 
 import AuthCallback from './pages/AuthCallback';
-import Layout from './layouts/Layout';
 import UserProfile from './pages/UserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
+import Layout from './layouts/Layout';
 
 const AppRoutes = () => {
   return (

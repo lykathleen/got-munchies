@@ -1,6 +1,5 @@
 import { useGetMyUser, useUpdateMyUser } from '@/api/MyUserApi';
 import UserProfileForm from '@/forms/user-profile-form/UserProfileForm';
-import React from 'react';
 
 const UserProfile = () => {
   const { currentUser, isLoading: isGetLoading } = useGetMyUser();
