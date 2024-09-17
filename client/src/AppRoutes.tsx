@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import AuthCallback from './pages/AuthCallback';
 import UserProfile from './pages/UserProfile';
 import ProtectedRoute from './auth/ProtectedRoute';
-import Layout from './layouts/Layout';
+import AppLayout from './layouts/AppLayout';
 
 const AppRoutes = () => {
   return (
@@ -13,9 +13,9 @@ const AppRoutes = () => {
       <Route
         path="/"
         element={
-          <Layout showHero>
+          <AppLayout showHero>
             <Home />
-          </Layout>
+          </AppLayout>
         }
       />
       <Route path="/auth-callback" element={<AuthCallback />} />
@@ -23,9 +23,9 @@ const AppRoutes = () => {
         <Route
           path="/user-profile"
           element={
-            <Layout>
+            <AppLayout>
               <UserProfile />
-            </Layout>
+            </AppLayout>
           }
         />
       </Route>
