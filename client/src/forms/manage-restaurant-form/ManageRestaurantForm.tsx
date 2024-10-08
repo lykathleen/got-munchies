@@ -17,6 +17,9 @@ const formSchema = z.object({
   country: z.string({
     required_error: 'Country is required',
   }),
+  city: z.string({
+    required_error: 'City is required',
+  }),
   deliveryPrice: z.coerce.number({
     required_error: 'Delivery price is required',
     invalid_type_error: 'Must be a valid number',
@@ -54,7 +57,36 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
   });
 
   const onSubmit = (formDataJson: RestaurantFormData) => {
-    // TODO: convert formDataJson to new FormData object to submit to BE
+    const formData = new FormData();
+
+    formData.append('restaurantName', formDataJson.restaurantName);
+    formData.append('city', formDataJson.city);
+    formData.append('country', formDataJson.country);
+
+    formData.append(
+      'deliveryPrice',
+      (formDataJson.deliveryPrice * 100).toString()
+    );
+    formData.append(
+      'estimatedDeliveryTime',
+      formDataJson.deliveryPrice.toString()
+    );
+
+    formDataJson.cuisines.forEach((cuisine, index) => {
+      formData.append(`cuisines[${index}]`, cuisine);
+    });
+
+    formDataJson.menuItems.forEach((item, index) => {
+      formData.append(`menuItems[${index}][name]`, item.name);
+      formData.append(
+        `menuItems[${index}][price]`,
+        (item.price * 100).toString()
+      );
+    });
+
+    formData.append('imageFile', formDataJson.imageFIle);
+
+    onSave(formData);
   };
 
   return (
