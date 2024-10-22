@@ -25,7 +25,11 @@ const DetailsSection = () => {
           <FormItem>
             <FormLabel>Name</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" />
+              <Input
+                {...field}
+                value={field.value ?? ''}
+                className="bg-white"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -39,7 +43,11 @@ const DetailsSection = () => {
             <FormItem className="flex-1">
               <FormLabel>City</FormLabel>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input
+                  {...field}
+                  value={field.value ?? ''}
+                  className="bg-white"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -52,7 +60,11 @@ const DetailsSection = () => {
             <FormItem className="flex-1">
               <FormLabel>Country</FormLabel>
               <FormControl>
-                <Input {...field} className="bg-white" />
+                <Input
+                  {...field}
+                  value={field.value ?? ''}
+                  className="bg-white"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -66,7 +78,12 @@ const DetailsSection = () => {
           <FormItem className="max-w-[25%]">
             <FormLabel>Delivery Price (£)</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" placeholder="1.50" />
+              <Input
+                {...field}
+                value={field.value ?? ''}
+                className="bg-white"
+                placeholder="1.50"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>
@@ -79,7 +96,12 @@ const DetailsSection = () => {
           <FormItem className="max-w-[25%]">
             <FormLabel>Estimated Delivery Time (minutes)</FormLabel>
             <FormControl>
-              <Input {...field} className="bg-white" placeholder="30" />
+              <Input
+                {...field}
+                value={field.value ?? ''}
+                className="bg-white"
+                placeholder="30"
+              />
             </FormControl>
             <FormMessage />
           </FormItem>

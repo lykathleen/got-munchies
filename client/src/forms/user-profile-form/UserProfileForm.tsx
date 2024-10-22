@@ -74,7 +74,11 @@ const UserProfileForm = ({ currentUser, onSave, isLoading }: Props) => {
             <FormItem>
               <FormLabel>Name</FormLabel>
               <FormControl>
-                <Input {...field} className="big-white" />
+                <Input
+                  {...field}
+                  value={field.value ?? ''}
+                  className="big-white"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -89,7 +93,11 @@ const UserProfileForm = ({ currentUser, onSave, isLoading }: Props) => {
               <FormItem className="flex-1">
                 <FormLabel>Address</FormLabel>
                 <FormControl>
-                  <Input {...field} className="big-white" />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                    className="big-white"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -102,7 +110,11 @@ const UserProfileForm = ({ currentUser, onSave, isLoading }: Props) => {
               <FormItem className="flex-1">
                 <FormLabel>City</FormLabel>
                 <FormControl>
-                  <Input {...field} className="big-white" />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                    className="big-white"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -115,7 +127,11 @@ const UserProfileForm = ({ currentUser, onSave, isLoading }: Props) => {
               <FormItem className="flex-1">
                 <FormLabel>Country</FormLabel>
                 <FormControl>
-                  <Input {...field} className="big-white" />
+                  <Input
+                    {...field}
+                    value={field.value ?? ''}
+                    className="big-white"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
