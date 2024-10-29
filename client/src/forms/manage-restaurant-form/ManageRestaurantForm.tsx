@@ -24,8 +24,8 @@ const formSchema = z.object({
     required_error: 'Delivery price is required',
     invalid_type_error: 'Must be a valid number',
   }),
-  estimatedPrice: z.coerce.number({
-    required_error: 'Estimated price is required',
+  estimatedDeliveryTime: z.coerce.number({
+    required_error: 'Estimated delivery time is required',
     invalid_type_error: 'Must be a valid number',
   }),
   cuisines: z.array(z.string()).nonempty({
@@ -37,7 +37,7 @@ const formSchema = z.object({
       price: z.coerce.number().min(1, 'Price is required'),
     })
   ),
-  imageFIle: z.instanceof(File, { message: 'Image is required' }),
+  imageFile: z.instanceof(File, { message: 'Image is required' }),
 });
 
 type RestaurantFormData = z.infer<typeof formSchema>;
@@ -56,7 +56,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     },
   });
 
-  const onSubmit = (formDataJson: RestaurantFormData) => {
+  const handleOnSubmit = (formDataJson: RestaurantFormData) => {
     const formData = new FormData();
 
     formData.append('restaurantName', formDataJson.restaurantName);
@@ -69,7 +69,7 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
     );
     formData.append(
       'estimatedDeliveryTime',
-      formDataJson.deliveryPrice.toString()
+      formDataJson.estimatedDeliveryTime.toString()
     );
 
     formDataJson.cuisines.forEach((cuisine, index) => {
@@ -84,15 +84,16 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
       );
     });
 
-    formData.append('imageFile', formDataJson.imageFIle);
+    formData.append('imageFile', formDataJson.imageFile);
 
     onSave(formData);
+    console.log(form.formState.errors);
   };
 
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={form.handleSubmit(handleOnSubmit)}
         className="space-y-8 bg-gray-50 p-10 rounded-lg"
       >
         <DetailsSection />
@@ -102,7 +103,8 @@ const ManageRestaurantForm = ({ onSave, isLoading }: Props) => {
         <MenuSection />
         <Separator />
         <ImageSection />
-        {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>}
+        {/* {isLoading ? <LoadingButton /> : <Button type="submit">Submit</Button>} */}
+        {!isLoading && <Button type="submit">Submit</Button>}
       </form>
     </Form>
   );
