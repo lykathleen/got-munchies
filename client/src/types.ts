@@ -7,10 +7,10 @@ export interface User {
   country: string;
 }
 
-interface MenuItem {
+export interface MenuItem {
   _id: string;
   name: string;
-  number: string;
+  price: number;
 }
 export interface Restaurant {
   _id: string;
